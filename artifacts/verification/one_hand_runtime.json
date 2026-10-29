@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-10-30T01:22:50.277029+09:00",
+  "robot_bridge_node": {
+    "speed_profile": "omx_f_official_default",
+    "max_joint_velocity": 0.5,
+    "max_joint_acceleration": 0.5,
+    "control_rate": 50.0,
+    "servo_gain": 8.0,
+    "max_cartesian_speed": 0.15,
+    "velocity_scaling": 0.1,
+    "acceleration_scaling": 0.1
+  },
+  "hand_control_node": {
+    "hand_scheme": "one_hand",
+    "max_speed": 0.15,
+    "max_target_lead": 0.06,
+    "filter_min_cutoff": 2.0
+  },
+  "live_status": {
+    "bridge": {
+      "mode": "servo",
+      "ready": true,
+      "enabled": true,
+      "arm_busy": false,
+      "gripper_busy": false,
+      "servo_started": true,
+      "message": "Enabled; waiting for fresh target",
+      "servo_solver": "cbf_qp",
+      "input_age_ms": 100.00000000000142,
+      "speed_profile": "omx_f_official_default",
+      "control_diagnostics": {
+        "feasible": true,
+        "sigma_min": 0.0877219103156841,
+        "damping": 0.01,
+        "tracking_error_m": 0.050307100030471494,
+        "active_bounds": 1,
+        "solve_ms": 1.630114999898069,
+        "reason": ""
+      }
+    },
+    "hand": {
+      "armed": true,
+      "tracking": true,
+      "clutch": false,
+      "mapping_mode": "relative",
+      "filter": "one_euro",
+      "precision": false,
+      "calibrated": true,
+      "hand_scheme": "one_hand",
+      "control_hand": "Right",
+      "detected_hands": [
+        "Right"
+      ],
+      "gripper_command": "RELEASE",
+      "message": "TRACKING"
+    }
+  },
+  "scope": "Runtime parameter and single-hand tracking snapshot; no quantitative physical gripper or one-hand motion calibration."
+}

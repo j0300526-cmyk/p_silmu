@@ -1,0 +1,45 @@
+name: ROS 2 Humble
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    container: ros:humble-ros-base-jammy
+    strategy:
+      fail-fast: false
+      matrix:
+        backend: [fake, gazebo_classic]
+        mode: [direct_ik, planned, servo]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build tools
+        run: |
+          apt-get update
+          apt-get install -y python3-colcon-common-extensions python3-vcstool python3-rosdep git xvfb libgl1-mesa-dri
+          test -f /etc/ros/rosdep/sources.list.d/20-default.list || rosdep init
+          rosdep update --rosdistro humble
+      - name: Import, resolve dependencies, and build
+        run: bash scripts/bootstrap.sh
+      - name: Unit and isolated camera callback tests
+        run: |
+          source /opt/ros/humble/setup.bash
+          source install/setup.bash
+          python3 -m unittest discover -s tests -v
+      - name: Synthetic research ablations
+        run: python3 scripts/benchmark_research.py --seeds 5
+      - name: Real controller and MoveIt flow
+        timeout-minutes: 8
+        env:
+          ROS_DOMAIN_ID: "47"
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          source /opt/ros/humble/setup.bash
+          source install/setup.bash
+          python3 scripts/check_model.py
+          omx_speed_args=()
+          if [[ "${{ matrix.backend }}" == gazebo_classic && "${{ matrix.mode }}" == planned ]]; then
+            omx_speed_args=(--speed-check)
+          fi
+          xvfb-run -a python3 scripts/smoke_ros.py --backend "${{ matrix.backend }}" --mode "${{ matrix.mode }}" "${omx_speed_args[@]}"

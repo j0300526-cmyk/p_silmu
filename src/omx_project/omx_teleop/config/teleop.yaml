@@ -1,0 +1,27 @@
+robot_bridge_node:
+  ros__parameters:
+    input_timeout: 0.35
+    joint_timeout: 0.5
+    control_rate: 20.0
+    max_joint_velocity: 0.4
+    max_joint_acceleration: 0.8
+    max_joint_step: 0.08
+    move_time: 0.3
+    servo_gain: 2.0
+    servo_solver: cbf_qp
+    max_cartesian_speed: 0.06
+    joint_limit_margin: 0.08
+    barrier_gain: 2.0
+    damping_min: 0.01
+    damping_max: 0.06
+    singularity_threshold: 0.04
+    temporal_weight: 0.0002
+    # Optional posture preference; zero avoids null-space drift while the hand is still.
+    posture_weight: 0.0
+    pitch_candidates: [0.0, 0.4, 0.8, -0.4, 1.2]
+    gripper_open: 0.019
+    gripper_close: -0.010
+    gripper_max_effort: 1.0
+    planning_time: 3.0
+    velocity_scaling: 0.2
+    acceleration_scaling: 0.2

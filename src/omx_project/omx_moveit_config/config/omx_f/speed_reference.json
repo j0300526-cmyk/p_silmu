@@ -1,0 +1,11 @@
+{
+  "source_commit": "f60b8c4237f57bd832c0214ee2bb3f516b7402fb",
+  "joint_limits_url": "https://github.com/ROBOTIS-GIT/open_manipulator/blob/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_moveit_config/config/omx_f/joint_limits.yaml",
+  "joint_limits_sha256": "8c28c5502145ff1c3203385dfbcfcc8bb9f94044cd4ae6323173ab397e6e1ca5",
+  "hardware_config_url": "https://github.com/ROBOTIS-GIT/open_manipulator/blob/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/ros2_control/omx_f.ros2_control.xacro",
+  "hardware_drive_mode": 4,
+  "hardware_profile_duration_ms": 50,
+  "hardware_acceleration_time_ms": 25,
+  "motor_profile_reproduced_in_gazebo": false,
+  "hardware_measurement_available": false
+}

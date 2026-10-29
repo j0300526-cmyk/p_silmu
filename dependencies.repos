@@ -1,0 +1,5 @@
+repositories:
+  open_manipulator:
+    type: git
+    url: https://github.com/ROBOTIS-GIT/open_manipulator.git
+    version: 84b68b219a0fa30b223ad7e3c268d1f11fa43577

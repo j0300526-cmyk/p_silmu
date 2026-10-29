@@ -1,0 +1,333 @@
+{
+  "scope": "Synthetic signal and ideal Euler kinematics only; no physics/collision/user study.",
+  "python": "3.10.12",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "controller_config": {
+    "gain": 2.0,
+    "max_cartesian_speed": 0.06,
+    "max_velocity": 0.4,
+    "max_acceleration": 0.8,
+    "joint_margin": 0.08,
+    "barrier_gain": 2.0,
+    "damping_min": 0.01,
+    "damping_max": 0.06,
+    "singularity_threshold": 0.04,
+    "temporal_weight": 0.0002,
+    "posture_weight": 0.0,
+    "posture_gain": 0.2
+  },
+  "filter_config": {
+    "min_cutoff": 1.0,
+    "beta": 0.8,
+    "derivative_cutoff": 1.0,
+    "baseline_window": 5,
+    "noise_std": 0.025,
+    "unit_step_at_s": 2.0
+  },
+  "filter": {
+    "moving_average": {
+      "stationary_std": {
+        "mean": 0.010886077745842177,
+        "std": 0.0021695607294443856
+      },
+      "step_90_ms": {
+        "mean": 121.78060953873856,
+        "std": 7.853345474600152
+      }
+    },
+    "one_euro": {
+      "stationary_std": {
+        "mean": 0.007642249776462786,
+        "std": 0.0018031803749128826
+      },
+      "step_90_ms": {
+        "mean": 105.25416026157393,
+        "std": 13.332791568537335
+      }
+    }
+  },
+  "control": {
+    "tracking": {
+      "analytic": {
+        "tracking_rms_mm": {
+          "mean": 9.736120359847146,
+          "std": 0.014585617905608982
+        },
+        "margin_violation_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "minimum_joint_margin_rad": {
+          "mean": 0.502,
+          "std": 0.0
+        },
+        "infeasible_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "max_command_velocity_rad_s": {
+          "mean": 0.19953477664546435,
+          "std": 0.003101995825648546
+        },
+        "max_command_acceleration_rad_s2": {
+          "mean": 0.8000000000000002,
+          "std": 0.0
+        },
+        "solve_p95_ms": {
+          "mean": 0.06889860014780425,
+          "std": 0.024360784161757094
+        },
+        "steps": {
+          "mean": 300,
+          "std": 0.0
+        }
+      },
+      "dls_clip": {
+        "tracking_rms_mm": {
+          "mean": 9.721053378604578,
+          "std": 0.013562262028925012
+        },
+        "margin_violation_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "minimum_joint_margin_rad": {
+          "mean": 0.502,
+          "std": 0.0
+        },
+        "infeasible_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "max_command_velocity_rad_s": {
+          "mean": 0.20010105245340312,
+          "std": 0.0035951484660169328
+        },
+        "max_command_acceleration_rad_s2": {
+          "mean": 0.8000000000000002,
+          "std": 0.0
+        },
+        "solve_p95_ms": {
+          "mean": 0.041833199793472886,
+          "std": 0.0016594352493104828
+        },
+        "steps": {
+          "mean": 300,
+          "std": 0.0
+        }
+      },
+      "qp_no_temporal": {
+        "tracking_rms_mm": {
+          "mean": 9.721510807062899,
+          "std": 0.013771515419650576
+        },
+        "margin_violation_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "minimum_joint_margin_rad": {
+          "mean": 0.502,
+          "std": 0.0
+        },
+        "infeasible_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "max_command_velocity_rad_s": {
+          "mean": 0.2002118704216274,
+          "std": 0.0036070061097069625
+        },
+        "max_command_acceleration_rad_s2": {
+          "mean": 0.8000000000000002,
+          "std": 0.0
+        },
+        "solve_p95_ms": {
+          "mean": 0.06622759992751526,
+          "std": 0.000985259462450146
+        },
+        "steps": {
+          "mean": 300,
+          "std": 0.0
+        }
+      },
+      "cbf_qp": {
+        "tracking_rms_mm": {
+          "mean": 9.722625282477479,
+          "std": 0.013729179923423747
+        },
+        "margin_violation_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "minimum_joint_margin_rad": {
+          "mean": 0.502,
+          "std": 0.0
+        },
+        "infeasible_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "max_command_velocity_rad_s": {
+          "mean": 0.2001010623950506,
+          "std": 0.003595150469441221
+        },
+        "max_command_acceleration_rad_s2": {
+          "mean": 0.8000000000000002,
+          "std": 0.0
+        },
+        "solve_p95_ms": {
+          "mean": 0.06605320013477467,
+          "std": 0.00020995474492924626
+        },
+        "steps": {
+          "mean": 300,
+          "std": 0.0
+        }
+      }
+    },
+    "joint_margin": {
+      "analytic": {
+        "tracking_rms_mm": {
+          "mean": 2.1434121881018315,
+          "std": 0.007010855710076882
+        },
+        "margin_violation_steps": {
+          "mean": 295,
+          "std": 0.0
+        },
+        "minimum_joint_margin_rad": {
+          "mean": 0.01323598545747231,
+          "std": 0.0004466547995060924
+        },
+        "infeasible_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "max_command_velocity_rad_s": {
+          "mean": 0.15954533059654097,
+          "std": 0.0006342363004462104
+        },
+        "max_command_acceleration_rad_s2": {
+          "mean": 0.8000000000000002,
+          "std": 0.0
+        },
+        "solve_p95_ms": {
+          "mean": 0.04000179997092346,
+          "std": 0.0008484750201419938
+        },
+        "steps": {
+          "mean": 300,
+          "std": 0.0
+        }
+      },
+      "dls_clip": {
+        "tracking_rms_mm": {
+          "mean": 2.1450649733402405,
+          "std": 0.006769801698603266
+        },
+        "margin_violation_steps": {
+          "mean": 295,
+          "std": 0.0
+        },
+        "minimum_joint_margin_rad": {
+          "mean": 0.013244025369197754,
+          "std": 0.00044551563314207626
+        },
+        "infeasible_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "max_command_velocity_rad_s": {
+          "mean": 0.1590839505238665,
+          "std": 0.0011808860597316735
+        },
+        "max_command_acceleration_rad_s2": {
+          "mean": 0.8000000000000002,
+          "std": 0.0
+        },
+        "solve_p95_ms": {
+          "mean": 0.038655200114590116,
+          "std": 0.0005459231554517589
+        },
+        "steps": {
+          "mean": 300,
+          "std": 0.0
+        }
+      },
+      "qp_no_temporal": {
+        "tracking_rms_mm": {
+          "mean": 9.899470552024887,
+          "std": 0.037221553854264344
+        },
+        "margin_violation_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "minimum_joint_margin_rad": {
+          "mean": 0.08000000000000185,
+          "std": 0.0
+        },
+        "infeasible_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "max_command_velocity_rad_s": {
+          "mean": 0.05600000000000005,
+          "std": 0.0
+        },
+        "max_command_acceleration_rad_s2": {
+          "mean": 0.8000000000000002,
+          "std": 0.0
+        },
+        "solve_p95_ms": {
+          "mean": 0.40641160012455657,
+          "std": 0.010216243703082446
+        },
+        "steps": {
+          "mean": 300,
+          "std": 0.0
+        }
+      },
+      "cbf_qp": {
+        "tracking_rms_mm": {
+          "mean": 9.899528913159681,
+          "std": 0.03721826986374286
+        },
+        "margin_violation_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "minimum_joint_margin_rad": {
+          "mean": 0.08000000000000185,
+          "std": 0.0
+        },
+        "infeasible_steps": {
+          "mean": 0,
+          "std": 0.0
+        },
+        "max_command_velocity_rad_s": {
+          "mean": 0.05600000000000005,
+          "std": 0.0
+        },
+        "max_command_acceleration_rad_s2": {
+          "mean": 0.8000000000000002,
+          "std": 0.0
+        },
+        "solve_p95_ms": {
+          "mean": 0.41806380013440503,
+          "std": 0.009370130212398634
+        },
+        "steps": {
+          "mean": 300,
+          "std": 0.0
+        }
+      }
+    }
+  }
+}

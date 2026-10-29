@@ -1,0 +1,7 @@
+# Use a venv with --system-site-packages on Ubuntu 22.04/Python 3.10.
+# Legacy mp.solutions.hands API used by the supplied code.
+numpy==1.26.4
+mediapipe==0.10.14
+opencv-contrib-python==4.10.0.84
+jax==0.4.30
+jaxlib==0.4.30

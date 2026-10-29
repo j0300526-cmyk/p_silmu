@@ -1,0 +1,25 @@
+build/
+install/
+log/
+.venv*/
+.tools/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+src/vendor/
+src/omx_project/omx_description/meshes/omx_f/*.stl
+# Local runtime state and downloaded snapshots; publish curated summaries only.
+artifacts/install/
+artifacts/reference/
+.env
+.env.*
+!.env.example
+*.bag
+*.db3
+*.mcap
+*.avi
+*.mp4
+*.webm
+*.egg-info/
+.coverage
+.DS_Store

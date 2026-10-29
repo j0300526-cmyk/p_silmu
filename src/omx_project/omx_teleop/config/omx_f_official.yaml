@@ -1,0 +1,12 @@
+# ROBOTIS f60b8c4: MoveIt limits 5.0 with default scaling 0.1 -> 0.5.
+# Servo uses the same effective joint bounds; UI pursuit tuning is project-specific.
+robot_bridge_node:
+  ros__parameters:
+    speed_profile: omx_f_official_default
+    control_rate: 50.0
+    max_joint_velocity: 0.5
+    max_joint_acceleration: 0.5
+    velocity_scaling: 0.1
+    acceleration_scaling: 0.1
+    servo_gain: 8.0
+    max_cartesian_speed: 0.15

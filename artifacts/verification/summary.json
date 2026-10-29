@@ -1,0 +1,120 @@
+{
+  "verified_on": "2026-10-30",
+  "timezone": "Asia/Seoul",
+  "environment": {
+    "os": "Ubuntu 22.04 amd64",
+    "ros": "Humble",
+    "simulator": "Gazebo Classic 11",
+    "python": "3.10"
+  },
+  "tests": {
+    "total": 55,
+    "ros_independent": 50,
+    "isolated_ros_message_callbacks": 5,
+    "result": "passed"
+  },
+  "model_expansion": {
+    "profiles": [
+      "omx_f",
+      "open_manipulator_x"
+    ],
+    "backends": [
+      "fake",
+      "gazebo_classic"
+    ],
+    "result": "passed"
+  },
+  "integration": [
+    {
+      "backend": "fake",
+      "mode": "planned",
+      "result": "passed",
+      "checks": [
+        "planning scene registration",
+        "arm JointState motion",
+        "gripper action and JointState",
+        "position hold after input loss"
+      ]
+    },
+    {
+      "backend": "fake",
+      "mode": "servo",
+      "result": "passed",
+      "checks": [
+        "planning scene registration",
+        "arm JointState motion",
+        "gripper action and JointState",
+        "position hold after input loss"
+      ]
+    },
+    {
+      "backend": "fake",
+      "mode": "direct_ik",
+      "result": "passed",
+      "checks": [
+        "planning scene registration",
+        "arm JointState motion",
+        "gripper action and JointState",
+        "position hold after input loss"
+      ]
+    },
+    {
+      "backend": "gazebo_classic",
+      "mode": "planned",
+      "result": "passed",
+      "checks": [
+        "planning scene registration",
+        "arm JointState motion",
+        "gripper action and JointState",
+        "position hold after input loss"
+      ]
+    },
+    {
+      "backend": "gazebo_classic",
+      "mode": "servo",
+      "result": "passed",
+      "checks": [
+        "planning scene registration",
+        "arm JointState motion",
+        "gripper action and JointState",
+        "position hold after input loss"
+      ]
+    },
+    {
+      "backend": "gazebo_classic",
+      "mode": "direct_ik",
+      "result": "passed",
+      "checks": [
+        "planning scene registration",
+        "arm JointState motion",
+        "gripper action and JointState",
+        "position hold after input loss"
+      ]
+    }
+  ],
+  "official_speed": {
+    "profile": "omx_f_official_default",
+    "source_commit": "f60b8c4237f57bd832c0214ee2bb3f516b7402fb",
+    "evidence": "official_speed_motion.json",
+    "hardware_calibrated": false
+  },
+  "webcam": {
+    "device_model": "ACER HD User Facing",
+    "resolution": [
+      640,
+      480
+    ],
+    "mediapipe": "0.10.14",
+    "earlier_two_hand_motion_evidence": "webcam_motion.json",
+    "one_hand_tracking_snapshot": "one_hand_runtime.json",
+    "single_hand_gesture_callback_tests": "passed",
+    "quantitative_one_hand_arm_gripper_gesture_trial": "not completed"
+  },
+  "github_actions": "Configured; consult the repository Actions tab for hosted CI status.",
+  "excluded": [
+    "raw webcam frames and video",
+    "local logs and host paths",
+    "downloaded binaries",
+    "venv/build/install/vendor checkouts"
+  ]
+}

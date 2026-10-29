@@ -1,0 +1,15 @@
+{
+  "robot_model": "omx_f",
+  "backend": "gazebo_classic",
+  "yaw_target_delta_rad": 0.7,
+  "yaw_actual_delta_rad": 0.7074508565733906,
+  "nominal_velocity_limit_rad_s": 0.5,
+  "nominal_acceleration_limit_rad_s2": 0.5,
+  "desired_peak_velocity": 0.5000000000001117,
+  "desired_peak_acceleration": 0.5017229586411993,
+  "position_derived_peak_velocity": 0.5001083611293473,
+  "position_samples": 249,
+  "reference": "official MoveIt limits 5.0 x default scale 0.1",
+  "hardware_calibrated": false,
+  "method": "Actual JointState positions differentiated over windows of at least 80 ms; not a physical motor measurement."
+}

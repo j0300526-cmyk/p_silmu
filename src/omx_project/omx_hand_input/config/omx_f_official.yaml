@@ -1,0 +1,6 @@
+# Application pursuit settings, not a hardware Cartesian speed specification.
+hand_control_node:
+  ros__parameters:
+    max_speed: 0.15
+    max_target_lead: 0.06
+    filter_min_cutoff: 2.0

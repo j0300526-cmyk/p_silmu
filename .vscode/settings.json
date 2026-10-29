@@ -1,0 +1,50 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/src/omx_project/omx_teleop",
+    "${workspaceFolder}/src/omx_project/omx_hand_input",
+    "${workspaceFolder}/src/omx_project/omx_bringup",
+    "/opt/ros/humble/lib/python3.10/site-packages",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages"
+  ],
+  "python.analysis.exclude": [
+    "**/.venv/**",
+    "**/build/**",
+    "**/install/**",
+    "**/log/**",
+    "**/src/vendor/**"
+  ],
+  "python.analysis.typeCheckingMode": "basic",
+  "python.testing.unittestEnabled": true,
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./tests",
+    "-p",
+    "test_*.py"
+  ],
+  "cmake.configureOnOpen": false,
+  "ros.distro": "humble",
+  "errorLens.enabled": true,
+  "terminal.integrated.profiles.linux": {
+    "OMX ROS 2": {
+      "path": "/bin/bash",
+      "args": [
+        "--init-file",
+        "${workspaceFolder}/scripts/vscode_shell.sh"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.linux": "OMX ROS 2",
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/build/omx_bringup",
+    "${workspaceFolder}/install/omx_bringup/lib/python3.10/site-packages",
+    "${workspaceFolder}/build/omx_hand_input",
+    "${workspaceFolder}/install/omx_hand_input/lib/python3.10/site-packages",
+    "${workspaceFolder}/build/omx_teleop",
+    "${workspaceFolder}/install/omx_teleop/lib/python3.10/site-packages",
+    "/opt/ros/humble/lib/python3.10/site-packages",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages"
+  ]
+}

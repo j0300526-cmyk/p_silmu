@@ -1,0 +1,48 @@
+{
+  "default_velocity_scaling_factor": 0.2,
+  "default_acceleration_scaling_factor": 0.2,
+  "joint_limits": {
+    "joint1": {
+      "has_velocity_limits": true,
+      "max_velocity": 0.6,
+      "has_acceleration_limits": true,
+      "max_acceleration": 0.8
+    },
+    "joint2": {
+      "has_velocity_limits": true,
+      "max_velocity": 0.6,
+      "has_acceleration_limits": true,
+      "max_acceleration": 0.8
+    },
+    "joint3": {
+      "has_velocity_limits": true,
+      "max_velocity": 0.6,
+      "has_acceleration_limits": true,
+      "max_acceleration": 0.8
+    },
+    "joint4": {
+      "has_velocity_limits": true,
+      "max_velocity": 0.6,
+      "has_acceleration_limits": true,
+      "max_acceleration": 0.8
+    },
+    "joint5": {
+      "has_velocity_limits": true,
+      "max_velocity": 0.6,
+      "has_acceleration_limits": true,
+      "max_acceleration": 0.8
+    },
+    "gripper_joint_1": {
+      "has_velocity_limits": true,
+      "max_velocity": 0.5,
+      "has_acceleration_limits": true,
+      "max_acceleration": 1.0
+    },
+    "gripper_joint_2": {
+      "has_velocity_limits": true,
+      "max_velocity": 0.5,
+      "has_acceleration_limits": true,
+      "max_acceleration": 1.0
+    }
+  }
+}

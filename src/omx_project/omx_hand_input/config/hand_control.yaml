@@ -1,0 +1,25 @@
+hand_control_node:
+  ros__parameters:
+    hand_scheme: one_hand
+    control_hand: auto
+    frame_rate: 30.0
+    max_speed: 0.06
+    deadzone_pixels: 40.0
+    filter_window: 5
+    base_hand_size: 110.0
+    mapping_mode: relative
+    input_filter: one_euro
+    filter_min_cutoff: 1.0
+    filter_beta: 0.8
+    filter_derivative_cutoff: 1.0
+    clutch_enabled: true
+    gesture_dwell: 0.08
+    precision_scale: 0.3
+    relative_gains: [0.12, 0.4, 0.3]
+    calibration_frames: 5
+    calibration_tolerance: 0.05
+    max_target_lead: 0.04
+    pinch_close_ratio: 0.22
+    pinch_open_ratio: 0.30
+    workspace_min: [0.05, -0.25, 0.05]
+    workspace_max: [0.35, 0.25, 0.30]

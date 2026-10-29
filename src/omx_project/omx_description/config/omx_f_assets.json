@@ -1,0 +1,54 @@
+{
+  "source_repository": "ROBOTIS-GIT/open_manipulator",
+  "source_commit": "f60b8c4237f57bd832c0214ee2bb3f516b7402fb",
+  "assets": [
+    {
+      "path": "open_manipulator_description/meshes/omx_f/follower_01_base.stl",
+      "git_blob_sha1": "0d1e1d1ef00d063a9e83d0b13d9d658de23aa177",
+      "destination": "meshes/omx_f/follower_01_base.stl",
+      "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/meshes/omx_f/follower_01_base.stl"
+    },
+    {
+      "path": "open_manipulator_description/meshes/omx_f/follower_02_base_tilt_Revised.stl",
+      "git_blob_sha1": "28217502943ce144c3e17f1e0bfc0440c87eadd0",
+      "destination": "meshes/omx_f/follower_02_base_tilt_Revised.stl",
+      "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/meshes/omx_f/follower_02_base_tilt_Revised.stl"
+    },
+    {
+      "path": "open_manipulator_description/meshes/omx_f/follower_03_middle_verticle.stl",
+      "git_blob_sha1": "2392e1e9e74d9b68b070c7fc0140667d196b7389",
+      "destination": "meshes/omx_f/follower_03_middle_verticle.stl",
+      "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/meshes/omx_f/follower_03_middle_verticle.stl"
+    },
+    {
+      "path": "open_manipulator_description/meshes/omx_f/follower_04_middle_horizontal.stl",
+      "git_blob_sha1": "09c9ea822384fc9b863ebf02715d4aa1544153ad",
+      "destination": "meshes/omx_f/follower_04_middle_horizontal.stl",
+      "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/meshes/omx_f/follower_04_middle_horizontal.stl"
+    },
+    {
+      "path": "open_manipulator_description/meshes/omx_f/follower_05_tip.stl",
+      "git_blob_sha1": "2da8d37f3e3da0cd4c6312fb1be0c287ef94268b",
+      "destination": "meshes/omx_f/follower_05_tip.stl",
+      "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/meshes/omx_f/follower_05_tip.stl"
+    },
+    {
+      "path": "open_manipulator_description/meshes/omx_f/follower_06_pan_Revised.stl",
+      "git_blob_sha1": "13684fdef0918523f74e033ef79714e4383fe79a",
+      "destination": "meshes/omx_f/follower_06_pan_Revised.stl",
+      "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/meshes/omx_f/follower_06_pan_Revised.stl"
+    },
+    {
+      "path": "open_manipulator_description/meshes/omx_f/follower_07_gripper_motorized.stl",
+      "git_blob_sha1": "de15960f441f29fc406265532f2e7d4be9307828",
+      "destination": "meshes/omx_f/follower_07_gripper_motorized.stl",
+      "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/meshes/omx_f/follower_07_gripper_motorized.stl"
+    },
+    {
+      "path": "open_manipulator_description/meshes/omx_f/follower_08_gripper_gear.stl",
+      "git_blob_sha1": "039743235514d0ff15384602b692bba3336eaac8",
+      "destination": "meshes/omx_f/follower_08_gripper_gear.stl",
+      "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/f60b8c4237f57bd832c0214ee2bb3f516b7402fb/open_manipulator_description/meshes/omx_f/follower_08_gripper_gear.stl"
+    }
+  ]
+}

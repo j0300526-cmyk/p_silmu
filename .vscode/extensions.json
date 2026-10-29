@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-vscode.cpptools",
+    "ms-iot.vscode-ros",
+    "ms-vscode.cmake-tools",
+    "openai.chatgpt",
+    "eamodio.gitlens",
+    "usernamehw.errorlens"
+  ]
+}

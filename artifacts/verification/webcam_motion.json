@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-30T00:46:27.245372+09:00",
+  "duration_sec": 20,
+  "tracking_observations": 47,
+  "enabled_observations": 47,
+  "pose_messages": 47,
+  "joint_messages": 1996,
+  "joint_ranges_rad_or_m": {
+    "joint2": 0.03788567990999159,
+    "joint3": 0.035779900789722596,
+    "joint1": 0.07906388690031019,
+    "joint4": 0.03403272655493339,
+    "joint5": 7.146836467875062e-05,
+    "gripper_joint_1": 5.428949303443176e-06,
+    "gripper_joint_2_mimic": 4.853717701536198e-06
+  },
+  "target_ranges_m": [
+    0.020790776209508782,
+    0.04785201634345022,
+    0.02385020826308762
+  ],
+  "hand_motion_observed": true,
+  "hand_scheme": "two_hand",
+  "scope": "Earlier webcam-to-Gazebo observation before the default changed to one_hand; not a one-hand gesture trial."
+}
