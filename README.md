@@ -210,6 +210,7 @@ GitHub Actions에는 두 backend × 세 모드 행렬 검사를 구성했습니�
 | 문서 | 내용 |
 |---|---|
 | [한 손 조작](docs/one_hand.md) | 손 선택, 재활성화, 그리퍼 매핑 |
+| [다음 작업 메모](docs/next_session.md) | 카메라 구성 확정 후 3D 손목·회전 제어 확장 |
 | [OMX-AI 모델과 실기 전환](docs/omx_ai.md) | 5축 OMX-F와 기존 4축 X 구분, Jazzy 전환 경계 |
 | [논문 아이디어](docs/research.md) | 1€ 필터, 상대 매핑, AnyTeleop, 제약 QP, 합성 비교 실험 |
 | [공식 속도 기준](docs/official_speed.md) | 고정한 원본 설정, 단위, 실제 Gazebo 측정 |
