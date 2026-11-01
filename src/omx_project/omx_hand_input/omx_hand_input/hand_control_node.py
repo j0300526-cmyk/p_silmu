@@ -91,6 +91,7 @@ class HandControlNode(Node):
         self.gripper_state = 'RELEASE'
         self.precision = False
         self.status_text = 'DISARMED'
+        self.start_button = None
         self.input_filter = VectorFilter(
             self.p('input_filter'), self.p('filter_window'),
             min_cutoff=self.p('filter_min_cutoff'), beta=self.p('filter_beta'),
@@ -131,6 +132,9 @@ class HandControlNode(Node):
             self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
             self.cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
             self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+            if self.p('show_window'):
+                cv2.namedWindow(self.window_title)
+                cv2.setMouseCallback(self.window_title, self.mouse_cb)
         except Exception:
             self.close_resources()
             raise
@@ -163,22 +167,33 @@ class HandControlNode(Node):
         self.clutch.reset()
         self.disable_tracking(status or ('ARMED / SHOW HAND AND HOLD STILL' if enabled else 'DISARMED'))
 
+    def mouse_cb(self, event, x, y, flags, userdata):
+        if event == self.cv2.EVENT_LBUTTONUP and self.start_button is not None:
+            left, top, right, bottom = self.start_button
+            if left <= x <= right and top <= y <= bottom:
+                self.set_armed(not self.armed)
+
     def disable_tracking(self, status='HOLD / DISARMED'):
         self.tracking = False
         self.input_filter.reset()
         self.mapper.reset()
         self.grasp.reset()
+        if status != self.status_text:
+            self.get_logger().info(status)
         self.status_text = status
         self.enable_pub.publish(Bool(data=False))
         self.publish_status()
 
     def publish_status(self):
+        age = time.monotonic() - self.feedback_at
         self.status_pub.publish(String(data=json.dumps({
             'armed': self.armed, 'tracking': self.tracking, 'clutch': self.clutch.state,
             'mapping_mode': self.p('mapping_mode'), 'filter': self.p('input_filter'),
             'precision': self.precision, 'calibrated': self.mapper.calibrated,
             'hand_scheme': self.p('hand_scheme'), 'control_hand': self.selected_hand,
             'detected_hands': self.detected_hands, 'gripper_command': self.gripper_state,
+            'feedback_fresh': self.current_q is not None and age <= 0.5,
+            'feedback_age_ms': round(age * 1000, 1) if math.isfinite(age) else None,
             'message': self.status_text,
         })))
 
@@ -222,11 +237,21 @@ class HandControlNode(Node):
             cv2.rectangle(frame, (int(center_x - dz), int(center_y - dz)),
                           (int(center_x + dz), int(center_y + dz)), (255, 255, 255), 1)
             scheme = 'ONE HAND' if self.p('hand_scheme') == 'one_hand' else 'TWO HANDS'
-            status = scheme + ' / ' + self.status_text + (' / PRECISION' if self.precision else '')
-            cv2.putText(frame, status, (15, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 220, 255), 2)
-            help_text = ('SPACE start/stop | PINCH grip | P fine' if self.p('hand_scheme') == 'one_hand'
-                         else 'SPACE arm | LEFT PINCH clutch | RIGHT PINCH grip')
-            cv2.putText(frame, help_text, (15, 50),
+            state = 'TRACKING' if self.tracking else 'ARMED' if self.armed else 'STOPPED'
+            cv2.putText(frame, scheme + ' / ' + state + (' / PRECISION' if self.precision else ''),
+                        (15, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 220, 255), 2)
+            self.start_button = (width - 130, 8, width - 10, 42)
+            cv2.rectangle(frame, self.start_button[:2], self.start_button[2:],
+                          (30, 30, 180) if self.armed else (40, 130, 30), -1)
+            cv2.putText(frame, 'STOP' if self.armed else 'START', (width - 112, 32),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+            # Keep the stop reason readable instead of clipping one long status line.
+            for index, line in enumerate(self.status_text.split(' / ')):
+                cv2.putText(frame, line, (15, 64 + 22 * index),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 220, 255), 1)
+            help_text = ('Click START or SPACE here | PINCH grip | P fine' if self.p('hand_scheme') == 'one_hand'
+                         else 'Click START | LEFT PINCH clutch | RIGHT PINCH grip')
+            cv2.putText(frame, help_text, (15, height - 40),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
             cv2.putText(frame, 'Control: ' + (self.selected_hand or 'show one hand')
                         + ' | Gripper: ' + self.gripper_state, (15, height - 15),
@@ -255,12 +280,20 @@ class HandControlNode(Node):
                 control_observation = hand_features(control_points, width, height)
             except ValueError:
                 pass
-        valid = (self.armed and control_observation is not None and self.current_q is not None
-                 and now - self.feedback_at <= 0.5)
+        feedback_fresh = self.current_q is not None and now - self.feedback_at <= 0.5
+        if not feedback_fresh:
+            # Gazebo stops publishing joint states when paused (Space in its GUI).
+            # Never resume motion automatically when feedback returns.
+            self.set_armed(False, 'NO JOINT FEEDBACK / CHECK GAZEBO PLAY / THEN CLICK START HERE')
+            return
+        if self.status_text.startswith('NO JOINT FEEDBACK'):
+            self.disable_tracking('FEEDBACK RESTORED / CLICK START OR PRESS SPACE HERE')
+        valid = self.armed and control_observation is not None
         if not valid:
             if self.tracking or self.clutch.state or self.hand_selector.selected is not None:
                 # Losing tracking requires deliberate rearming, rather than jumping on reacquisition.
-                self.set_armed(False, 'HAND OR FEEDBACK LOST / PRESS SPACE')
+                reason = ('HAND LOST' if control_points is None else 'HAND TOO SMALL OR INVALID')
+                self.set_armed(False, reason + ' / SHOW WHOLE HAND AND CLICK START')
             else:
                 self.clutch.reset()
                 self.disable_tracking('ARMED / SHOW HAND' if self.armed else self.status_text)

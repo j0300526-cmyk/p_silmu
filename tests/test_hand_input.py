@@ -80,7 +80,8 @@ class HandCallbackTest(unittest.TestCase):
         n.hands = NS(process=lambda f: self.results)
         n.get_clock = lambda: NS(now=lambda: NS(to_msg=lambda: __import__(
             'builtin_interfaces.msg', fromlist=['Time']).Time(sec=1)))
-        n.get_logger = lambda: NS(warn=lambda *args, **kwargs: None)
+        n.get_logger = lambda: NS(warn=lambda *args, **kwargs: None,
+                                  info=lambda *args, **kwargs: None)
         n.set_armed(True)
 
     def frame(self, time, hands, fresh=True):
@@ -137,6 +138,30 @@ class HandCallbackTest(unittest.TestCase):
         self.frame(11, [('Right', False, .5)], fresh=False)
         self.assertFalse(self.node.armed)
         self.assertFalse(self.node.enable_pub.messages[-1].data)
+        self.assertIn('NO JOINT FEEDBACK', self.node.status_text)
+        self.assertFalse(json.loads(self.node.status_pub.messages[-1].data)['feedback_fresh'])
+        count = len(self.node.pose_pub.messages)
+        self.frame(11.1, [('Right', False, .5)])
+        self.assertFalse(self.node.armed)
+        self.assertIn('FEEDBACK RESTORED', self.node.status_text)
+        self.assertEqual(len(self.node.pose_pub.messages), count)
+
+    def test_mouse_start_stop_uses_same_explicit_arming(self):
+        n = self.node
+        n.start_button = (510, 8, 630, 42)
+        n.cv2.EVENT_LBUTTONUP = 4
+        n.set_armed(False)
+        n.mouse_cb(4, 100, 100, 0, None)
+        self.assertFalse(n.armed)
+        n.mouse_cb(4, 560, 25, 0, None)
+        self.assertTrue(n.armed)
+        self.frame(10, [('Right', False, .5)])
+        self.frame(10.05, [('Right', False, .5)])
+        self.assertTrue(n.tracking)
+        n.mouse_cb(4, 560, 25, 0, None)
+        self.assertFalse(n.armed)
+        self.assertFalse(n.tracking)
+        self.assertFalse(n.enable_pub.messages[-1].data)
 
     def test_ambiguous_handedness_does_not_transfer_control(self):
         self.frame(10, [('Right', False, .5)])
